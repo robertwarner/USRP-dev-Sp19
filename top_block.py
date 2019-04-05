@@ -16,26 +16,28 @@ if __name__ == '__main__':
         except:
             print "Warning: failed to XInitThreads()"
 
+from gnuradio import blocks
 from gnuradio import digital
 from gnuradio import eng_notation
+from gnuradio import filter
 from gnuradio import gr
-from gnuradio import uhd
-from gnuradio import wxgui
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
 from gnuradio.wxgui import forms
-from gnuradio.wxgui import scopesink2
 from grc_gnuradio import blks2 as grc_blks2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
-import time
+import limesdr
+import pmt
 import wx
 
 
 class top_block(grc_wxgui.top_block_gui):
 
-    def __init__(self, address0='serial=3136C69', address1='serial=3136C6D', freq=2.45e9, freq_offset=0, samp_rate=500e3):
+    def __init__(self, address0='serial=3136C69', address1='serial=3136C6D', freq=2.45e9, freq_offset=0, samp_rate=1e6):
         grc_wxgui.top_block_gui.__init__(self, title="Top Block")
+        _icon_path = "/usr/share/icons/hicolor/32x32/apps/gnuradio-grc.png"
+        self.SetIcon(wx.Icon(_icon_path, wx.BITMAP_TYPE_ANY))
 
         ##################################################
         # Parameters
@@ -50,8 +52,8 @@ class top_block(grc_wxgui.top_block_gui):
         # Variables
         ##################################################
         self.tun_tx_gain = tun_tx_gain = 0
-        self.tun_rx_gain = tun_rx_gain = 62.6
-        self.tun_freq = tun_freq = 2.45e9
+        self.tun_rx_gain = tun_rx_gain = 30
+        self.tun_freq = tun_freq = freq + freq_offset
         self.tone_ampl = tone_ampl = 1
         self.tone2 = tone2 = samp_rate/4
         self.tone1 = tone1 = samp_rate/4
@@ -97,40 +99,14 @@ class top_block(grc_wxgui.top_block_gui):
         	sizer=_tun_freq_sizer,
         	value=self.tun_freq,
         	callback=self.set_tun_freq,
-        	minimum=2.4e9,
-        	maximum=2.5e9,
+        	minimum=500e3,
+        	maximum=3e9,
         	num_steps=1000,
         	style=wx.SL_HORIZONTAL,
         	cast=float,
         	proportion=1,
         )
         self.GridAdd(_tun_freq_sizer, 2, 0, 1, 8)
-        self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
-        	self.GetWin(),
-        	title='Receiving',
-        	sample_rate=samp_rate,
-        	v_scale=0,
-        	v_offset=0,
-        	t_scale=0,
-        	ac_couple=False,
-        	xy_mode=False,
-        	num_inputs=1,
-        	trig_mode=wxgui.TRIG_MODE_AUTO,
-        	y_axis_label='Counts',
-        )
-        self.GridAdd(self.wxgui_scopesink2_0.win, 4, 4, 4, 4)
-        self.uhd_usrp_source_0_0 = uhd.usrp_source(
-        	",".join(('address2', "")),
-        	uhd.stream_args(
-        		cpu_format="fc32",
-        		channels=range(1),
-        	),
-        )
-        self.uhd_usrp_source_0_0.set_samp_rate(samp_rate)
-        self.uhd_usrp_source_0_0.set_center_freq(tun_freq, 0)
-        self.uhd_usrp_source_0_0.set_gain(tun_rx_gain, 0)
-        self.uhd_usrp_source_0_0.set_auto_dc_offset(True, 0)
-        self.uhd_usrp_source_0_0.set_auto_iq_balance(True, 0)
         _tun_tx_gain_sizer = wx.BoxSizer(wx.VERTICAL)
         self._tun_tx_gain_text_box = forms.text_box(
         	parent=self.GetWin(),
@@ -223,6 +199,30 @@ class top_block(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.GridAdd(_tone1_sizer, 0, 0, 1, 4)
+        self.low_pass_filter_0 = filter.fir_filter_ccf(1, firdes.low_pass(
+        	1, samp_rate, 200e3, 50e3, firdes.WIN_HAMMING, 6.76))
+        self.limesdr_source_0 = limesdr.source('', 0, '')
+        self.limesdr_source_0.set_sample_rate(samp_rate)
+        self.limesdr_source_0.set_center_freq(tun_freq, 0)
+        self.limesdr_source_0.set_bandwidth(5e6,0)
+        self.limesdr_source_0.set_gain(tun_rx_gain,0)
+        self.limesdr_source_0.set_antenna(255,0)
+        self.limesdr_source_0.calibrate(5e6, 0)
+
+        self.limesdr_sink_0 = limesdr.sink('', 0, '', '')
+        self.limesdr_sink_0.set_sample_rate(samp_rate)
+        self.limesdr_sink_0.set_center_freq(tun_freq, 0)
+        self.limesdr_sink_0.set_bandwidth(5e6,0)
+        self.limesdr_sink_0.set_gain(tun_rx_gain,0)
+        self.limesdr_sink_0.set_antenna(255,0)
+        self.limesdr_sink_0.calibrate(5e6, 0)
+
+        self.digital_gmsk_mod_0 = digital.gmsk_mod(
+        	samples_per_symbol=4,
+        	bt=0.35,
+        	verbose=False,
+        	log=False,
+        )
         self.digital_gmsk_demod_0 = digital.gmsk_demod(
         	samples_per_symbol=4,
         	gain_mu=0.175,
@@ -232,7 +232,20 @@ class top_block(grc_wxgui.top_block_gui):
         	verbose=False,
         	log=False,
         )
-        self.blks2_packet_decoder_0 = grc_blks2.packet_demod_f(grc_blks2.packet_decoder(
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/test.txt', False)
+        self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_char*1, '/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/experiment_code/results.txt', False)
+        self.blocks_file_sink_0.set_unbuffered(True)
+        self.blks2_packet_encoder_0 = grc_blks2.packet_mod_b(grc_blks2.packet_encoder(
+        		samples_per_symbol=4,
+        		bits_per_symbol=1,
+        		preamble='',
+        		access_code='',
+        		pad_for_usrp=False,
+        	),
+        	payload_length=1,
+        )
+        self.blks2_packet_decoder_0 = grc_blks2.packet_demod_b(grc_blks2.packet_decoder(
         		access_code='',
         		threshold=-1,
         		callback=lambda ok, payload: self.blks2_packet_decoder_0.recv_pkt(ok, payload),
@@ -244,9 +257,13 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.blks2_packet_decoder_0, 0), (self.wxgui_scopesink2_0, 0))
+        self.connect((self.blks2_packet_decoder_0, 0), (self.blocks_file_sink_0, 0))
+        self.connect((self.blks2_packet_encoder_0, 0), (self.digital_gmsk_mod_0, 0))
+        self.connect((self.blocks_file_source_0, 0), (self.blks2_packet_encoder_0, 0))
         self.connect((self.digital_gmsk_demod_0, 0), (self.blks2_packet_decoder_0, 0))
-        self.connect((self.uhd_usrp_source_0_0, 0), (self.digital_gmsk_demod_0, 0))
+        self.connect((self.digital_gmsk_mod_0, 0), (self.limesdr_sink_0, 0))
+        self.connect((self.limesdr_source_0, 0), (self.low_pass_filter_0, 0))
+        self.connect((self.low_pass_filter_0, 0), (self.digital_gmsk_demod_0, 0))
 
     def get_address0(self):
         return self.address0
@@ -265,22 +282,23 @@ class top_block(grc_wxgui.top_block_gui):
 
     def set_freq(self, freq):
         self.freq = freq
+        self.set_tun_freq(self.freq + self.freq_offset)
 
     def get_freq_offset(self):
         return self.freq_offset
 
     def set_freq_offset(self, freq_offset):
         self.freq_offset = freq_offset
+        self.set_tun_freq(self.freq + self.freq_offset)
 
     def get_samp_rate(self):
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
-        self.uhd_usrp_source_0_0.set_samp_rate(self.samp_rate)
         self.set_tone2(self.samp_rate/4)
         self.set_tone1(self.samp_rate/4)
+        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 200e3, 50e3, firdes.WIN_HAMMING, 6.76))
 
     def get_tun_tx_gain(self):
         return self.tun_tx_gain
@@ -297,8 +315,8 @@ class top_block(grc_wxgui.top_block_gui):
         self.tun_rx_gain = tun_rx_gain
         self._tun_rx_gain_slider.set_value(self.tun_rx_gain)
         self._tun_rx_gain_text_box.set_value(self.tun_rx_gain)
-        self.uhd_usrp_source_0_0.set_gain(self.tun_rx_gain, 0)
-
+        self.limesdr_source_0.set_gain(self.tun_rx_gain,0)
+        self.limesdr_sink_0.set_gain(self.tun_rx_gain,0)
 
     def get_tun_freq(self):
         return self.tun_freq
@@ -307,7 +325,8 @@ class top_block(grc_wxgui.top_block_gui):
         self.tun_freq = tun_freq
         self._tun_freq_slider.set_value(self.tun_freq)
         self._tun_freq_text_box.set_value(self.tun_freq)
-        self.uhd_usrp_source_0_0.set_center_freq(self.tun_freq, 0)
+        self.limesdr_source_0.set_center_freq(self.tun_freq, 0)
+        self.limesdr_sink_0.set_center_freq(self.tun_freq, 0)
 
     def get_tone_ampl(self):
         return self.tone_ampl
@@ -349,7 +368,7 @@ def argument_parser():
         "-o", "--freq-offset", dest="freq_offset", type="eng_float", default=eng_notation.num_to_str(0),
         help="Set Rx Frequency Offset [default=%default]")
     parser.add_option(
-        "-s", "--samp-rate", dest="samp_rate", type="eng_float", default=eng_notation.num_to_str(500e3),
+        "-s", "--samp-rate", dest="samp_rate", type="eng_float", default=eng_notation.num_to_str(1e6),
         help="Set Sample Rate [default=%default]")
     return parser
 
