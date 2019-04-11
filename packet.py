@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ##################################################
 # GNU Radio Python Flow Graph
-# Title: Top Block
+# Title: Packet
 # GNU Radio version: 3.7.13.4
 ##################################################
 
@@ -32,10 +32,10 @@ import pmt
 import wx
 
 
-class top_block(grc_wxgui.top_block_gui):
+class packet(grc_wxgui.top_block_gui):
 
     def __init__(self, address0='serial=3136C69', address1='serial=3136C6D', freq=2.45e9, freq_offset=0, samp_rate=1e6):
-        grc_wxgui.top_block_gui.__init__(self, title="Top Block")
+        grc_wxgui.top_block_gui.__init__(self, title="Packet")
         _icon_path = "/usr/share/icons/hicolor/32x32/apps/gnuradio-grc.png"
         self.SetIcon(wx.Icon(_icon_path, wx.BITMAP_TYPE_ANY))
 
@@ -199,6 +199,7 @@ class top_block(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.GridAdd(_tone1_sizer, 0, 0, 1, 4)
+        self.prate = blocks.probe_rate(gr.sizeof_char*1, 500.0, 0.15)
         self.low_pass_filter_0 = filter.interp_fir_filter_ccf(1, firdes.low_pass(
         	1, samp_rate, 200e3, 50e3, firdes.WIN_HAMMING, 6.76))
         self.limesdr_source_0 = limesdr.source('', 0, '')
@@ -217,7 +218,6 @@ class top_block(grc_wxgui.top_block_gui):
         self.limesdr_sink_0.set_antenna(255,0)
         self.limesdr_sink_0.calibrate(5e6, 0)
 
-        self.digital_probe_density_b_0 = digital.probe_density_b(1)
         self.digital_gmsk_mod_0 = digital.gmsk_mod(
         	samples_per_symbol=4,
         	bt=0.35,
@@ -233,7 +233,6 @@ class top_block(grc_wxgui.top_block_gui):
         	verbose=False,
         	log=False,
         )
-        self.blocks_probe_rate_0 = blocks.probe_rate(gr.sizeof_char*1, 500.0, 0.15)
         self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/test.txt', False)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, '/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/experiment_code/results.txt', False)
@@ -260,9 +259,8 @@ class top_block(grc_wxgui.top_block_gui):
         # Connections
         ##################################################
         self.connect((self.blks2_packet_decoder_0, 0), (self.blocks_file_sink_0, 0))
-        self.connect((self.blks2_packet_encoder_0, 0), (self.blocks_probe_rate_0, 0))
         self.connect((self.blks2_packet_encoder_0, 0), (self.digital_gmsk_mod_0, 0))
-        self.connect((self.blks2_packet_encoder_0, 0), (self.digital_probe_density_b_0, 0))
+        self.connect((self.blks2_packet_encoder_0, 0), (self.prate, 0))
         self.connect((self.blocks_file_source_0, 0), (self.blks2_packet_encoder_0, 0))
         self.connect((self.digital_gmsk_demod_0, 0), (self.blks2_packet_decoder_0, 0))
         self.connect((self.digital_gmsk_mod_0, 0), (self.limesdr_sink_0, 0))
@@ -377,13 +375,15 @@ def argument_parser():
     return parser
 
 
-def main(top_block_cls=top_block, options=None):
+def main(top_block_cls=packet, options=None):
     if options is None:
         options, _ = argument_parser().parse_args()
 
     tb = top_block_cls(address0=options.address0, address1=options.address1, freq=options.freq, freq_offset=options.freq_offset, samp_rate=options.samp_rate)
     tb.Start(True)
+    print(tb.prate.rate())
     tb.Wait()
+    print(tb.prate.rate())
 
 
 if __name__ == '__main__':
