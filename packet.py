@@ -19,7 +19,6 @@ if __name__ == '__main__':
 from gnuradio import blocks
 from gnuradio import digital
 from gnuradio import eng_notation
-from gnuradio import filter
 from gnuradio import gr
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
@@ -199,17 +198,6 @@ class packet(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.GridAdd(_tone1_sizer, 0, 0, 1, 4)
-        self.prate = blocks.probe_rate(gr.sizeof_char*1, 500.0, 0.15)
-        self.low_pass_filter_0 = filter.interp_fir_filter_ccf(1, firdes.low_pass(
-        	1, samp_rate, 200e3, 50e3, firdes.WIN_HAMMING, 6.76))
-        self.limesdr_source_0 = limesdr.source('', 0, '')
-        self.limesdr_source_0.set_sample_rate(samp_rate)
-        self.limesdr_source_0.set_center_freq(tun_freq, 0)
-        self.limesdr_source_0.set_bandwidth(5e6,0)
-        self.limesdr_source_0.set_gain(tun_rx_gain,0)
-        self.limesdr_source_0.set_antenna(255,0)
-        self.limesdr_source_0.calibrate(5e6, 0)
-
         self.limesdr_sink_0 = limesdr.sink('', 0, '', '')
         self.limesdr_sink_0.set_sample_rate(samp_rate)
         self.limesdr_sink_0.set_center_freq(tun_freq, 0)
@@ -224,19 +212,8 @@ class packet(grc_wxgui.top_block_gui):
         	verbose=False,
         	log=False,
         )
-        self.digital_gmsk_demod_0 = digital.gmsk_demod(
-        	samples_per_symbol=4,
-        	gain_mu=0.175,
-        	mu=0.5,
-        	omega_relative_limit=0.005,
-        	freq_error=0.0,
-        	verbose=False,
-        	log=False,
-        )
         self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/test.txt', False)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, '/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/experiment_code/results.txt', False)
-        self.blocks_file_sink_0.set_unbuffered(True)
         self.blks2_packet_encoder_0 = grc_blks2.packet_mod_b(grc_blks2.packet_encoder(
         		samples_per_symbol=4,
         		bits_per_symbol=1,
@@ -246,26 +223,15 @@ class packet(grc_wxgui.top_block_gui):
         	),
         	payload_length=1,
         )
-        self.blks2_packet_decoder_0 = grc_blks2.packet_demod_c(grc_blks2.packet_decoder(
-        		access_code='',
-        		threshold=-1,
-        		callback=lambda ok, payload: self.blks2_packet_decoder_0.recv_pkt(ok, payload),
-        	),
-        )
 
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.blks2_packet_decoder_0, 0), (self.blocks_file_sink_0, 0))
         self.connect((self.blks2_packet_encoder_0, 0), (self.digital_gmsk_mod_0, 0))
-        self.connect((self.blks2_packet_encoder_0, 0), (self.prate, 0))
         self.connect((self.blocks_file_source_0, 0), (self.blks2_packet_encoder_0, 0))
-        self.connect((self.digital_gmsk_demod_0, 0), (self.blks2_packet_decoder_0, 0))
         self.connect((self.digital_gmsk_mod_0, 0), (self.limesdr_sink_0, 0))
-        self.connect((self.limesdr_source_0, 0), (self.low_pass_filter_0, 0))
-        self.connect((self.low_pass_filter_0, 0), (self.digital_gmsk_demod_0, 0))
 
     def get_address0(self):
         return self.address0
@@ -300,7 +266,6 @@ class packet(grc_wxgui.top_block_gui):
         self.samp_rate = samp_rate
         self.set_tone2(self.samp_rate/4)
         self.set_tone1(self.samp_rate/4)
-        self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, 200e3, 50e3, firdes.WIN_HAMMING, 6.76))
 
     def get_tun_tx_gain(self):
         return self.tun_tx_gain
@@ -317,7 +282,6 @@ class packet(grc_wxgui.top_block_gui):
         self.tun_rx_gain = tun_rx_gain
         self._tun_rx_gain_slider.set_value(self.tun_rx_gain)
         self._tun_rx_gain_text_box.set_value(self.tun_rx_gain)
-        self.limesdr_source_0.set_gain(self.tun_rx_gain,0)
         self.limesdr_sink_0.set_gain(self.tun_rx_gain,0)
 
     def get_tun_freq(self):
@@ -327,7 +291,6 @@ class packet(grc_wxgui.top_block_gui):
         self.tun_freq = tun_freq
         self._tun_freq_slider.set_value(self.tun_freq)
         self._tun_freq_text_box.set_value(self.tun_freq)
-        self.limesdr_source_0.set_center_freq(self.tun_freq, 0)
         self.limesdr_sink_0.set_center_freq(self.tun_freq, 0)
 
     def get_tone_ampl(self):
@@ -381,9 +344,7 @@ def main(top_block_cls=packet, options=None):
 
     tb = top_block_cls(address0=options.address0, address1=options.address1, freq=options.freq, freq_offset=options.freq_offset, samp_rate=options.samp_rate)
     tb.Start(True)
-    print(tb.prate.rate())
     tb.Wait()
-    print(tb.prate.rate())
 
 
 if __name__ == '__main__':
