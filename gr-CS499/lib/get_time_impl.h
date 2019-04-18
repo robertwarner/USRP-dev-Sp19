@@ -31,14 +31,13 @@ namespace gr {
     class get_time_impl : public get_time
     {
      private:
-      // Nothing to declare in this block.
-	auto start;
+    	std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
      public:
       get_time_impl();
       ~get_time_impl();
 
 
-      int work(int noutput_items,
+      long long work(int noutput_items,
            gr_vector_const_void_star &input_items,
            gr_vector_void_star &output_items);
     };

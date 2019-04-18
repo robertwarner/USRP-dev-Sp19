@@ -147,12 +147,12 @@ def main(top_block_cls=transceiver, options=None):
     print 'i hope this works'
     print 'sink queue count:', tb.sink_queue.count()
     print 'inserting:', 'a'
-    #tb.source_queue.insert_tail(gr.message_from_string('a'))
+    tb.source_queue.insert_tail(gr.message_from_string('a'))
     time.sleep(1)
 
-    #print 'sink queue count:', tb.sink_queue.count()
+    print 'sink queue count:', tb.sink_queue.count()
 
-    #print 'received:', tb.sink_queue.delete_head().to_string()
+    print 'received:', tb.sink_queue.delete_head().to_string()
 
     print 'operating with fuctions supplied by the top block'
     print 'sending:', 'a'*512

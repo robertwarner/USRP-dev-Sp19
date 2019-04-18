@@ -1,4 +1,4 @@
-# Install script for directory: /home/rob/gr-CS499/grc
+# Install script for directory: /home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/grc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gnuradio/grc/blocks" TYPE FILE FILES "/home/rob/gr-CS499/grc/CS499_get_time.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gnuradio/grc/blocks" TYPE FILE FILES "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/grc/CS499_get_time.xml")
 endif()
 

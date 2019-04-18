@@ -1,4 +1,4 @@
-# Install script for directory: /home/rob/gr-CS499/lib
+# Install script for directory: /home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,8 +50,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xCS499_runtimex" OR NOT CMAKE_INSTAL
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/rob/gr-CS499/build/lib/libgnuradio-CS499-1.0.0git.so.0.0.0"
-    "/home/rob/gr-CS499/build/lib/libgnuradio-CS499-1.0.0git.so"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib/libgnuradio-CS499-1.0.0git.so.0.0.0"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib/libgnuradio-CS499-1.0.0git.so"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgnuradio-CS499-1.0.0git.so.0.0.0"
@@ -59,6 +59,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xCS499_runtimex" OR NOT CMAKE_INSTAL
       )
     if(EXISTS "${file}" AND
        NOT IS_SYMLINK "${file}")
+      file(RPATH_CHANGE
+           FILE "${file}"
+           OLD_RPATH "/usr/local/lib:"
+           NEW_RPATH "")
       if(CMAKE_INSTALL_DO_STRIP)
         execute_process(COMMAND "/usr/bin/strip" "${file}")
       endif()
@@ -68,8 +72,8 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xCS499_runtimex" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE FILE FILES
-    "/home/rob/gr-CS499/build/lib/libgnuradio-CS499.so"
-    "/home/rob/gr-CS499/build/lib/libgnuradio-CS499-1.0.0git.so.0"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib/libgnuradio-CS499.so"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib/libgnuradio-CS499-1.0.0git.so.0"
     )
 endif()
 

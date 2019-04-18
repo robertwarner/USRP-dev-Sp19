@@ -1,4 +1,4 @@
-# Install script for directory: /home/rob/gr-CS499/include/CS499
+# Install script for directory: /home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/include/CS499
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/CS499" TYPE FILE FILES
-    "/home/rob/gr-CS499/include/CS499/api.h"
-    "/home/rob/gr-CS499/include/CS499/get_time.h"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/include/CS499/api.h"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/include/CS499/get_time.h"
     )
 endif()
 

@@ -24,7 +24,6 @@
 
 #include <gnuradio/io_signature.h>
 #include "get_time_impl.h"
-#include <chrono>
 #include <gnuradio/io_signature.h>
 #include <cstdio>
 #include <sys/types.h>
@@ -48,14 +47,11 @@ namespace gr {
     /*
      * The private constructor
      */
-    get_time_impl::get_time_impl():
-	 sync_block("get_time",
+    get_time_impl::get_time_impl()
+          : gr::block("get_time",
               gr::io_signature::make(0, 0, 0),
               gr::io_signature::make(1, 1, sizeof(long long)))
-    {
-    	start = std::chrono::high_resolution_clock::now();
-    
-    }
+    {}
 
     /*
      * Our virtual destructor.
@@ -65,14 +61,14 @@ namespace gr {
     }
 
 
-    int
+    long long
     get_time_impl::work (int noutput_items,
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)
     {
-      auto elapsed = std::chrono::high_resolution_clock::now() - start;
-      long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(elapsed).count();
-      return microseconds;
+      std::chrono::high_resolution_clock::time_point finish = std::chrono::high_resolution_clock::now();
+      long long elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start).count();
+      return elapsed;
     }
 
   } /* namespace CS499 */

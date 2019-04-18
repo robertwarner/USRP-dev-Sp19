@@ -1,4 +1,4 @@
-# Install script for directory: /home/rob/gr-CS499/docs/doxygen
+# Install script for directory: /home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/docs/doxygen
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/gr-CS499" TYPE DIRECTORY FILES
-    "/home/rob/gr-CS499/build/docs/doxygen/xml"
-    "/home/rob/gr-CS499/build/docs/doxygen/html"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/docs/doxygen/xml"
+    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/docs/doxygen/html"
     )
 endif()
 
