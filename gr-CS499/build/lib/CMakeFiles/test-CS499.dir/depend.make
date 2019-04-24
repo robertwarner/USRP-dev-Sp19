@@ -3,11 +3,7 @@
 
 lib/CMakeFiles/test-CS499.dir/qa_CS499.cc.o: ../lib/qa_CS499.cc
 lib/CMakeFiles/test-CS499.dir/qa_CS499.cc.o: ../lib/qa_CS499.h
-lib/CMakeFiles/test-CS499.dir/qa_CS499.cc.o: /usr/local/include/gnuradio/attributes.h
 
 lib/CMakeFiles/test-CS499.dir/test_CS499.cc.o: ../lib/qa_CS499.h
 lib/CMakeFiles/test-CS499.dir/test_CS499.cc.o: ../lib/test_CS499.cc
-lib/CMakeFiles/test-CS499.dir/test_CS499.cc.o: /usr/local/include/gnuradio/api.h
-lib/CMakeFiles/test-CS499.dir/test_CS499.cc.o: /usr/local/include/gnuradio/attributes.h
-lib/CMakeFiles/test-CS499.dir/test_CS499.cc.o: /usr/local/include/gnuradio/unittests.h
 

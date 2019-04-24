@@ -31,7 +31,7 @@ endif()
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    DESTINATION ${GR_PYTHON_DIR}/CS499
+    numbers.py DESTINATION ${GR_PYTHON_DIR}/CS499
 )
 
 ########################################################################
@@ -42,3 +42,4 @@ include(GrTest)
 set(GR_TEST_TARGET_DEPS gnuradio-CS499)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
 GR_ADD_TEST(qa_get_time ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_get_time.py)
+GR_ADD_TEST(qa_numbers ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_numbers.py)

@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG -fPIC   -fvisibility=hidden
 
 CXX_DEFINES = -Dgnuradio_CS499_EXPORTS
 
-CXX_INCLUDES = -I/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/lib -I/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/include -I/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib -I/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/include -I/usr/local/include 
+CXX_INCLUDES = -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/include -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/lib -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/include 
 

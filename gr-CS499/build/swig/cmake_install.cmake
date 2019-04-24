@@ -1,4 +1,4 @@
-# Install script for directory: /home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/swig
+# Install script for directory: /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/swig
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,12 +44,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499/_CS499_swig.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE MODULE FILES "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/_CS499_swig.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE MODULE FILES "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/_CS499_swig.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499/_CS499_swig.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499/_CS499_swig.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499/_CS499_swig.so"
-         OLD_RPATH "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib:/usr/local/lib:"
+         OLD_RPATH "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499/_CS499_swig.so")
@@ -58,20 +58,20 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE FILE FILES "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE FILE FILES "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE FILE FILES
-    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig.pyc"
-    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig.pyo"
+    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig.pyc"
+    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig.pyo"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/CS499/CS499/swig" TYPE FILE FILES
-    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/swig/CS499_swig.i"
-    "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig_doc.i"
+    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/swig/CS499_swig.i"
+    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig_doc.i"
     )
 endif()
 

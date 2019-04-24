@@ -1,4 +1,4 @@
-# Install script for directory: /home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499
+# Install script for directory: /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/CS499" TYPE FILE FILES "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/cmake/Modules/CS499Config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/CS499" TYPE FILE FILES "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/cmake/Modules/CS499Config.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/include/CS499/cmake_install.cmake")
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/lib/cmake_install.cmake")
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/cmake_install.cmake")
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/python/cmake_install.cmake")
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/grc/cmake_install.cmake")
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/apps/cmake_install.cmake")
-  include("/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/docs/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/include/CS499/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/lib/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/python/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/grc/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/apps/cmake_install.cmake")
+  include("/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/docs/cmake_install.cmake")
 
 endif()
 
@@ -61,5 +61,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

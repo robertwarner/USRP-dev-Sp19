@@ -3,8 +3,9 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Fm Rec
-# GNU Radio version: 3.7.13.4
+# Generated: Wed Apr 24 11:38:06 2019
 ##################################################
+
 
 if __name__ == '__main__':
     import ctypes
@@ -94,8 +95,6 @@ class fm_rec(grc_wxgui.top_block_gui):
         	quad_rate=250e3,
         	audio_decimation=1,
         )
-
-
 
         ##################################################
         # Connections

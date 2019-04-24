@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig_swig_2d0df.cpp" "/home/ty/Desktop/sdr/shared/USRP-dev-Sp19/gr-CS499/build/swig/CMakeFiles/CS499_swig_swig_2d0df.dir/CS499_swig_swig_2d0df.cpp.o"
+  "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/CS499_swig_swig_2d0df.cpp" "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig/CMakeFiles/CS499_swig_swig_2d0df.dir/CS499_swig_swig_2d0df.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,10 +14,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "lib"
   "include"
-  "/usr/local/include"
   "swig"
   "../swig"
-  "/usr/local/include/gnuradio/swig"
+  "/usr/include/gnuradio/swig"
   "/usr/include/python2.7"
   )
 
