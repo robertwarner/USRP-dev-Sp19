@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/qa_CS499.cc
+qa_CS499.h
+/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/qa_CS499.h
+
+/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/qa_CS499.h
+gnuradio/attributes.h
+-
+cppunit/TestSuite.h
+-
+
+/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/test_CS499.cc
+config.h
+/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/config.h
+cppunit/TextTestRunner.h
+-
+cppunit/XmlOutputter.h
+-
+gnuradio/unittests.h
+-
+qa_CS499.h
+/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/qa_CS499.h
+iostream
+-
+fstream
+-
+
