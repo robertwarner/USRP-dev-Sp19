@@ -1,4 +1,4 @@
-# Install script for directory: /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/docs
+# Install script for directory: /home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/docs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,11 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/docs/doxygen/cmake_install.cmake")
+
 endif()
 

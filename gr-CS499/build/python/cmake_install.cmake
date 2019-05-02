@@ -1,4 +1,4 @@
-# Install script for directory: /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/python
+# Install script for directory: /home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/python
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,17 +39,17 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE FILE FILES
-    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/python/__init__.py"
-    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/python/numbers.py"
+    "/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/python/__init__.py"
+    "/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/python/numbers.py"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/CS499" TYPE FILE FILES
-    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/python/__init__.pyc"
-    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/python/numbers.pyc"
-    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/python/__init__.pyo"
-    "/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/python/numbers.pyo"
+    "/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/python/__init__.pyc"
+    "/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/python/numbers.pyc"
+    "/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/python/__init__.pyo"
+    "/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/python/numbers.pyo"
     )
 endif()
 

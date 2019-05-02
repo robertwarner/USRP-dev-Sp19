@@ -8304,7 +8304,17 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"high_res_timer_now_perfmon", _wrap_high_res_timer_now_perfmon, METH_VARARGS, (char *)"high_res_timer_now_perfmon() -> gr::high_res_timer_type"},
 	 { (char *)"high_res_timer_tps", _wrap_high_res_timer_tps, METH_VARARGS, (char *)"high_res_timer_tps() -> gr::high_res_timer_type"},
 	 { (char *)"high_res_timer_epoch", _wrap_high_res_timer_epoch, METH_VARARGS, (char *)"high_res_timer_epoch() -> gr::high_res_timer_type"},
-	 { (char *)"get_time_make", _wrap_get_time_make, METH_VARARGS, (char *)"get_time_make() -> get_time_sptr"},
+	 { (char *)"get_time_make", _wrap_get_time_make, METH_VARARGS, (char *)"\n"
+		"get_time_make() -> get_time_sptr\n"
+		"\n"
+		"<+description of block+>\n"
+		"\n"
+		"Constructor Specific Documentation:\n"
+		"\n"
+		"Return a shared_ptr to a new instance of CS499::get_time.\n"
+		"\n"
+		"To avoid accidental use of raw pointers, CS499::get_time's constructor is in a private implementation class. CS499::get_time::make is the public interface for creating new instances.\n"
+		""},
 	 { (char *)"delete_get_time", _wrap_delete_get_time, METH_VARARGS, (char *)"delete_get_time(get_time self)"},
 	 { (char *)"get_time_swigregister", get_time_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_get_time_sptr", _wrap_new_get_time_sptr, METH_VARARGS, (char *)"\n"
@@ -8313,7 +8323,17 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"get_time_sptr___deref__", _wrap_get_time_sptr___deref__, METH_VARARGS, (char *)"get_time_sptr___deref__(get_time_sptr self) -> get_time"},
 	 { (char *)"delete_get_time_sptr", _wrap_delete_get_time_sptr, METH_VARARGS, (char *)"delete_get_time_sptr(get_time_sptr self)"},
-	 { (char *)"get_time_sptr_make", _wrap_get_time_sptr_make, METH_VARARGS, (char *)"get_time_sptr_make(get_time_sptr self) -> get_time_sptr"},
+	 { (char *)"get_time_sptr_make", _wrap_get_time_sptr_make, METH_VARARGS, (char *)"\n"
+		"get_time_sptr_make(get_time_sptr self) -> get_time_sptr\n"
+		"\n"
+		"<+description of block+>\n"
+		"\n"
+		"Constructor Specific Documentation:\n"
+		"\n"
+		"Return a shared_ptr to a new instance of CS499::get_time.\n"
+		"\n"
+		"To avoid accidental use of raw pointers, CS499::get_time's constructor is in a private implementation class. CS499::get_time::make is the public interface for creating new instances.\n"
+		""},
 	 { (char *)"get_time_sptr_history", _wrap_get_time_sptr_history, METH_VARARGS, (char *)"get_time_sptr_history(get_time_sptr self) -> unsigned int"},
 	 { (char *)"get_time_sptr_declare_sample_delay", _wrap_get_time_sptr_declare_sample_delay, METH_VARARGS, (char *)"\n"
 		"declare_sample_delay(int which, int delay)\n"

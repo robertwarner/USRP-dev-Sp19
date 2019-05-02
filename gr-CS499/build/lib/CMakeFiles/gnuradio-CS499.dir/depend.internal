@@ -4,5 +4,5 @@
 lib/CMakeFiles/gnuradio-CS499.dir/get_time_impl.cc.o
  ../include/CS499/api.h
  ../include/CS499/get_time.h
- /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.cc
- /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.h
+ /home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.cc
+ /home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.h

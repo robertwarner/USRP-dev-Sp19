@@ -1,4 +1,4 @@
-# Install script for directory: /home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/apps
+# Install script for directory: /home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/apps
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

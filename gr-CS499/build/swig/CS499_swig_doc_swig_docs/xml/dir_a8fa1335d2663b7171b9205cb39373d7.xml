@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_a8fa1335d2663b7171b9205cb39373d7" kind="dir">
+    <compoundname>CS499</compoundname>
+    <innerfile refid="api_8h">api.h</innerfile>
+    <innerfile refid="get__time_8h">get_time.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/include/CS499/"/>
+  </compounddef>
+</doxygen>

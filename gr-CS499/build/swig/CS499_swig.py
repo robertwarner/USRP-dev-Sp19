@@ -113,7 +113,15 @@ def high_res_timer_epoch():
     """high_res_timer_epoch() -> gr::high_res_timer_type"""
     return _CS499_swig.high_res_timer_epoch()
 class get_time(object):
-    """Proxy of C++ gr::CS499::get_time class."""
+    """
+    <+description of block+>
+
+    Constructor Specific Documentation:
+
+    Return a shared_ptr to a new instance of CS499::get_time.
+
+    To avoid accidental use of raw pointers, CS499::get_time's constructor is in a private implementation class. CS499::get_time::make is the public interface for creating new instances.
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -122,7 +130,17 @@ class get_time(object):
     __repr__ = _swig_repr
 
     def make():
-        """make() -> get_time_sptr"""
+        """
+        make() -> get_time_sptr
+
+        <+description of block+>
+
+        Constructor Specific Documentation:
+
+        Return a shared_ptr to a new instance of CS499::get_time.
+
+        To avoid accidental use of raw pointers, CS499::get_time's constructor is in a private implementation class. CS499::get_time::make is the public interface for creating new instances.
+        """
         return _CS499_swig.get_time_make()
 
     make = staticmethod(make)
@@ -132,7 +150,17 @@ get_time_swigregister = _CS499_swig.get_time_swigregister
 get_time_swigregister(get_time)
 
 def get_time_make():
-    """get_time_make() -> get_time_sptr"""
+    """
+    get_time_make() -> get_time_sptr
+
+    <+description of block+>
+
+    Constructor Specific Documentation:
+
+    Return a shared_ptr to a new instance of CS499::get_time.
+
+    To avoid accidental use of raw pointers, CS499::get_time's constructor is in a private implementation class. CS499::get_time::make is the public interface for creating new instances.
+    """
     return _CS499_swig.get_time_make()
 
 class get_time_sptr(object):
@@ -160,7 +188,17 @@ class get_time_sptr(object):
     __del__ = lambda self: None
 
     def make(self):
-        """make(get_time_sptr self) -> get_time_sptr"""
+        """
+        make(get_time_sptr self) -> get_time_sptr
+
+        <+description of block+>
+
+        Constructor Specific Documentation:
+
+        Return a shared_ptr to a new instance of CS499::get_time.
+
+        To avoid accidental use of raw pointers, CS499::get_time's constructor is in a private implementation class. CS499::get_time::make is the public interface for creating new instances.
+        """
         return _CS499_swig.get_time_sptr_make(self)
 
 

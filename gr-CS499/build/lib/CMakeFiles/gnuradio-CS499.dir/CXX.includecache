@@ -16,13 +16,13 @@ CS499/api.h
 gnuradio/block.h
 -
 
-/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.cc
+/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.cc
 config.h
-/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/config.h
+/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib/config.h
 gnuradio/io_signature.h
 -
 get_time_impl.h
-/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.h
+/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.h
 gnuradio/io_signature.h
 -
 cstdio
@@ -38,7 +38,7 @@ stdexcept
 stdio.h
 -
 
-/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.h
+/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib/get_time_impl.h
 CS499/get_time.h
 -
 chrono

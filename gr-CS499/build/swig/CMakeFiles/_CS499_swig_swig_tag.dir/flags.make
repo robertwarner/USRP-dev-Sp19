@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -fvisibility=hidden
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/lib -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/include -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/lib -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/include -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/build/swig -I/home/ty/Desktop/sdr/USRP-dev-Sp19/gr-CS499/swig -I/usr/include/gnuradio/swig -I/usr/include/python2.7 
+CXX_INCLUDES = -I/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/lib -I/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/include -I/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/lib -I/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/include -I/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/build/swig -I/home/rob/Documents/_CSCI499/USRP-dev-Sp19/gr-CS499/swig -I/usr/include/gnuradio/swig -I/usr/include/python2.7 
 
