@@ -27,6 +27,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND CS499_sources
     get_time_impl.cc
+    get_time_impl.cc
 )
 
 set(CS499_sources "${CS499_sources}" PARENT_SCOPE)

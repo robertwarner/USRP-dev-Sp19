@@ -32,10 +32,16 @@ class qa_get_time (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_t (self):
-        # set up fg
-        self.tb.run ()
-        # check data
-
+        src_data = (-3, 4, -5.5, 2, 3)
+        src = blocks.vector_source_f(src_data)
+        sqr = CS499.get_time()
+        dst = blocks.vector_sink_f()
+        self.tb.connect(src, sqr, dst)
+        self.tb.run()
+        result_data = dst.data()
+        for i in result_data:
+            print(i)
+        
 
 if __name__ == '__main__':
     gr_unittest.run(qa_get_time, "qa_get_time.xml")

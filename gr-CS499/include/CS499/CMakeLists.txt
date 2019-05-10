@@ -22,5 +22,6 @@
 ########################################################################
 install(FILES
     api.h
+    get_time.h
     get_time.h DESTINATION include/CS499
 )

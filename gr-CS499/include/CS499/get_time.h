@@ -23,7 +23,7 @@
 #define INCLUDED_CS499_GET_TIME_H
 
 #include <CS499/api.h>
-#include <gnuradio/block.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace CS499 {
@@ -33,7 +33,7 @@ namespace gr {
      * \ingroup CS499
      *
      */
-    class CS499_API get_time : virtual public gr::block
+    class CS499_API get_time : virtual public gr::sync_block
     {
      public:
       typedef boost::shared_ptr<get_time> sptr;

@@ -23,7 +23,6 @@
 
 #include <CS499/get_time.h>
 #include <chrono>
- 
 
 namespace gr {
   namespace CS499 {
@@ -31,15 +30,16 @@ namespace gr {
     class get_time_impl : public get_time
     {
      private:
-    	std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+      
+      std::chrono::high_resolution_clock::time_point start;
      public:
       get_time_impl();
       ~get_time_impl();
 
-
-      long long work(int noutput_items,
-           gr_vector_const_void_star &input_items,
-           gr_vector_void_star &output_items);
+      // Where all the action really happens
+      int work(int noutput_items,
+         gr_vector_const_void_star &input_items,
+         gr_vector_void_star &output_items);
     };
 
   } // namespace CS499

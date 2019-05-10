@@ -9,8 +9,10 @@
 
 %{
 #include "CS499/get_time.h"
+
 %}
 
 
 %include "CS499/get_time.h"
 GR_SWIG_BLOCK_MAGIC2(CS499, get_time);
+

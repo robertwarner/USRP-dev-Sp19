@@ -24,15 +24,6 @@
 
 #include <gnuradio/io_signature.h>
 #include "get_time_impl.h"
-#include <gnuradio/io_signature.h>
-#include <cstdio>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdexcept>
-#include <stdio.h>
-
-
 
 namespace gr {
   namespace CS499 {
@@ -48,29 +39,41 @@ namespace gr {
      * The private constructor
      */
     get_time_impl::get_time_impl()
-          : gr::block("get_time",
-              gr::io_signature::make(0, 0, 0),
-              gr::io_signature::make(1, 1, sizeof(long long)))
-    {}
+      : gr::sync_block("get_time",
+              gr::io_signature::make(1, 1, sizeof(float)),
+              gr::io_signature::make(1, 1, sizeof(int)))
+    {
+      start = std::chrono::high_resolution_clock::now();
+    }
 
     /*
-     * Our virtual destructor.
+     * Our virtual desstructor.
      */
     get_time_impl::~get_time_impl()
     {
     }
 
 
-    long long
-    get_time_impl::work (int noutput_items,
-                       gr_vector_const_void_star &input_items,
-                       gr_vector_void_star &output_items)
+    int
+    get_time_impl::work(int noutput_items,
+        gr_vector_const_void_star &input_items,
+        gr_vector_void_star &output_items)
     {
-      std::chrono::high_resolution_clock::time_point finish = std::chrono::high_resolution_clock::now();
-      long long elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(finish - start).count();
-      return elapsed;
+      const float *in = (const float *) input_items[0];
+      float *out = (float *) output_items[0];
+
+      // Do <+signal processing+>
+      for(int i = 0; i < noutput_items; i++){
+        std::chrono::high_resolution_clock::time_point finished = std::chrono::high_resolution_clock::now();
+        int elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(finished - start).count();
+        
+        out[i] = elapsed;
+        //out[i] = in[i];
+      }
+      consume_each (noutput_items);
+      // Tell runtime system how many output items we produced.
+      return noutput_items;
     }
 
   } /* namespace CS499 */
 } /* namespace gr */
-

@@ -31,6 +31,4 @@ except ImportError:
 	pass
 
 # import any pure python here
-from numbers import numbers
-
 #
